@@ -112,6 +112,9 @@
 
       var script = document.createElement("script");
       script.src = loaderUrl;
+      script.onerror = () => {
+        unityShowBanner('Failed to load Unity loader script. Check that the Build folder is accessible.', 'error');
+      };
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
@@ -122,7 +125,8 @@
                 };
 
               }).catch((message) => {
-                alert(message);
+                console.error('Unity initialization error:', message);
+                unityShowBanner('Error loading Unity: ' + message, 'error');
               });
             };
 
