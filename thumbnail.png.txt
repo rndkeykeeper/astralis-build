@@ -1,0 +1,3 @@
+This is a placeholder for thumbnail.png
+You can add a 200x200 PNG image here to show a preview in Unity Build Settings.
+This file can be deleted after adding a real thumbnail.png
