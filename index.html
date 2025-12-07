@@ -65,6 +65,10 @@
     <script>
         console.log('[Telegram] Initializing...');
         if (typeof Telegram !== 'undefined' && typeof Telegram.WebApp !== 'undefined') {
+            console.log('[Telegram] ✓ API Available');
+            console.log('[Telegram] Platform:', Telegram.WebApp.platform);
+            console.log('[Telegram] Version:', Telegram.WebApp.version);
+
             Telegram.WebApp.expand();
             Telegram.WebApp.disableVerticalSwipes();
 
