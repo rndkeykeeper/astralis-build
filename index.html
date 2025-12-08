@@ -63,20 +63,9 @@
 <body>
     <!-- Telegram Init Script -->
     <script>
-        console.log('[Telegram] Initializing...');
         if (typeof Telegram !== 'undefined' && typeof Telegram.WebApp !== 'undefined') {
-            console.log('[Telegram] ✓ API Available');
-            console.log('[Telegram] Platform:', Telegram.WebApp.platform);
-            console.log('[Telegram] Version:', Telegram.WebApp.version);
-
             Telegram.WebApp.expand();
             Telegram.WebApp.disableVerticalSwipes();
-
-            if (Telegram.WebApp.initDataUnsafe?.user) {
-                console.log('[Telegram] User:', Telegram.WebApp.initDataUnsafe.user);
-            }
-        } else {
-            console.warn('[Telegram] ✗ Not Available (Editor/Browser mode)');
         }
     </script>
 
@@ -123,20 +112,16 @@
                 progressBarFull.style.width = 100 * progress + "%";
             }).then((unityInstance) => {
                 loadingBar.style.display = "none";
-                console.log('[Unity] ✓ Loaded successfully');
 
                 if (typeof Telegram !== 'undefined' && typeof Telegram.WebApp !== 'undefined') {
                     Telegram.WebApp.ready();
-                    console.log('[Telegram] ✓ Ready signal sent');
                 }
             }).catch((message) => {
-                console.error('[Unity] ✗ Load Error:', message);
-                alert('Unity Load Error: ' + message);
+                alert('Failed to load application');
             });
         };
         script.onerror = () => {
-            console.error('[Unity] ✗ Script Load Failed');
-            alert('Failed to load Unity loader script');
+            alert('Failed to load application');
         };
         document.body.appendChild(script);
     </script>
